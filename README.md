@@ -1,12 +1,20 @@
 # Tests for Tool Shop Demo application
 
+## Tool Shop Demo Application
+
+Repository: https://github.com/testsmith-io/practice-software-testing
+
+Website: https://practicesoftwaretesting.com/#/
+
+Follow instructions in app README
+
 ## Prepare
 
 ### Local recommended tools:
 
-- VSC
+- VS Code
 - Git
-- Node >16
+- Node.js (version >16)
 
 ### Installation and setup
 
@@ -14,3 +22,13 @@
 - install dependencies: `npm install`
 - setup Playwright with: `npx playwright install --with-deps chromium`
 - setup husky with: `npx husky install`
+
+## Use
+
+Run all tests:
+
+```
+npx playwright test
+```
+
+For more usage cases look in `package.json` scripts section.
