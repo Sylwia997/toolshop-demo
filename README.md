@@ -22,6 +22,7 @@ Follow instructions in app README
 - install dependencies: `npm install`
 - setup Playwright with: `npx playwright install --with-deps chromium`
 - setup husky with: `npx husky install`
+- prepare local env file: `cp .env-template .env`
 
 ## Use
 
