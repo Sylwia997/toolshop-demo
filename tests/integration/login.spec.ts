@@ -16,7 +16,7 @@ test.describe('Verify login', () => {
     await loginPage.goto();
     await loginPage.login(adminUser);
 
-    const title = await dashboardPage.title();
+    const title = await dashboardPage.getTitle();
 
     // Assert
     expect(title).toContain(expectedDashboardTitle);

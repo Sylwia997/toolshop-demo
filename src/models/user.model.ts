@@ -1,7 +1,7 @@
 export interface RegisterUserModel {
   userFirstName: string;
   userLastName: string;
-  userDateOfBirth: string;
+  userDateOfBirth: Date;
   userAddress: string;
   userPostcode: string;
   userCity: string;
