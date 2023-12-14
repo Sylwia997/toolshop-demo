@@ -7,12 +7,9 @@ export class LoginPage extends BasePage {
   userEmailInput = this.page.locator('[data-test="email"]');
   userPasswordInput = this.page.locator('[data-test="password"]');
   loginButton = this.page.locator('[data-test="login-submit"]');
+  headingTitle = this.page.getByRole('heading', { name: 'Login' });
   constructor(page: Page) {
     super(page);
-  }
-
-  async goto(): Promise<void> {
-    await this.page.goto(this.url);
   }
 
   async login(loginUserData: LoginUserModel): Promise<void> {
