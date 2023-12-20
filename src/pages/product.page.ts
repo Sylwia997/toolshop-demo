@@ -12,6 +12,7 @@ export class ProductPage extends BasePage {
   cartIcon = this.page.locator('[data-test="nav-cart"]');
   cartQuantity = this.page.locator('[data-test="cart-quantity"]');
   quantityInput = this.page.locator('[data-test="quantity"]');
+  addProductToFavoritesPopUp = this.page.getByText('Product added to your');
 
   constructor(page: Page) {
     super(page);
