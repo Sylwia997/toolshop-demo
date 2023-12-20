@@ -1,4 +1,4 @@
-import { LoginUserModel } from '../models/user.model';
+import { LoginUserModel } from '@_src/models/user.model';
 
 export const adminUser: LoginUserModel = {
   userEmail: process.env.ADMIN_EMAIL ?? '[NOT SET]',

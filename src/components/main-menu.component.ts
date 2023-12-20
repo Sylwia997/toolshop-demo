@@ -1,4 +1,4 @@
-import { LoginPage } from '../pages/login.page';
+import { LoginPage } from '@_src/pages/login.page';
 import { Page } from '@playwright/test';
 
 export class MainMenuComponent {

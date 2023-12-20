@@ -1,4 +1,4 @@
-import { LoginPage } from '../pages/login.page';
+import { LoginPage } from '@_src/pages/login.page';
 import { test as baseTest } from '@playwright/test';
 
 interface Pages {

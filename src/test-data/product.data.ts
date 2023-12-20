@@ -1,4 +1,4 @@
-import { ProductModel } from '../models/product.model';
+import { ProductModel } from '@_src/models/product.model';
 
 export const product1: ProductModel = {
   productName: 'Combination Pliers',

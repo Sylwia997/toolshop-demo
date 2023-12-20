@@ -1,6 +1,6 @@
-import { formatDateForRegister } from '../helpers/date.helper';
-import { RegisterUserModel } from '../models/user.model';
 import { BasePage } from './base.page';
+import { formatDateForRegister } from '@_src/helpers/date.helper';
+import { RegisterUserModel } from '@_src/models/user.model';
 import { Page } from '@playwright/test';
 
 export class RegisterPage extends BasePage {
