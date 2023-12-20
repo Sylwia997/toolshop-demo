@@ -1,7 +1,7 @@
 /* eslint-disable playwright/expect-expect */
-import { DashboardPage } from '../../src/pages/dashboard.page';
-import { LoginPage } from '../../src/pages/login.page';
-import { adminUser } from '../../src/test-data/user.data';
+import { DashboardPage } from '@_src/pages/dashboard.page';
+import { LoginPage } from '@_src/pages/login.page';
+import { customerUser1 } from '@_src/test-data/user.data';
 import test, { expect } from '@playwright/test';
 
 test.describe('Verify login', () => {
@@ -14,7 +14,7 @@ test.describe('Verify login', () => {
 
     // Act
     await loginPage.goto();
-    await loginPage.login(adminUser);
+    await loginPage.login(customerUser1);
 
     const title = await dashboardPage.getTitle();
 

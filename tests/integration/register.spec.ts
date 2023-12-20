@@ -1,7 +1,7 @@
 /* eslint-disable playwright/expect-expect */
-import { randomUserData } from '../../src/factories/user.factory';
-import { LoginPage } from '../../src/pages/login.page';
-import { RegisterPage } from '../../src/pages/register.page';
+import { randomUserData } from '@_src/factories/user.factory';
+import { LoginPage } from '@_src/pages/login.page';
+import { RegisterPage } from '@_src/pages/register.page';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify register', () => {
