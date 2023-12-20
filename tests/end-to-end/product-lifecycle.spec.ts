@@ -1,44 +1,34 @@
 /* eslint-disable playwright/expect-expect */
 import { randomUserData } from '@_src/factories/user.factory';
-import { AccountPage } from '@_src/pages/account.page';
 import { CheckoutPage } from '@_src/pages/checkout.page';
 import { HomePage } from '@_src/pages/home.page';
-import { LoginPage } from '@_src/pages/login.page';
 import { ProductPage } from '@_src/pages/product.page';
 import { product1 } from '@_src/test-data/product.data';
-import { customerUser1 } from '@_src/test-data/user.data';
 import test, { expect } from '@playwright/test';
 
 test.describe('Select, add to cart and buy product', () => {
   let homePage: HomePage;
   let productPage: ProductPage;
   let checkoutPage: CheckoutPage;
-  let loginPage: LoginPage;
-  let accountPage: AccountPage;
 
   test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
     productPage = new ProductPage(page);
     checkoutPage = new CheckoutPage(page);
-    loginPage = new LoginPage(page);
-    accountPage = new AccountPage(page);
 
-    await loginPage.goto();
-    await loginPage.login(customerUser1);
-    await accountPage.waitForPageToLoadUrl();
     await homePage.goto();
     await homePage.goToProduct(product1.productName);
   });
-  test('user can access single product', async () => {
+  test('user can access single product @logged', async () => {
     // Assert
 
     await expect(productPage.productName).toHaveText(product1.productName);
   });
-  test('user can add product to cart', async () => {
+  test('user can add product to cart @logged', async () => {
     await productPage.addToCartButton.click();
     await expect(productPage.addProductToCartPopUp).toBeVisible();
   });
-  test('verify product quantity in card', async () => {
+  test('verify product quantity in card @logged', async () => {
     // Arrange
     const productQuantity = '7';
 
@@ -50,7 +40,7 @@ test.describe('Select, add to cart and buy product', () => {
     await expect(productPage.cartQuantity).toHaveText(productQuantity);
   });
 
-  test('verify product price in card', async () => {
+  test('verify product price in card @logged', async () => {
     // Arrange
     const productQuantity = 2;
 
