@@ -1,3 +1,4 @@
+import { formatDateForRegister } from '../helpers/date.helper';
 import { RegisterUserModel } from '../models/user.model';
 import { BasePage } from './base.page';
 import { Page } from '@playwright/test';
@@ -25,9 +26,13 @@ export class RegisterPage extends BasePage {
   }
 
   async register(registerUserData: RegisterUserModel): Promise<void> {
+    const userDateOfBirth = formatDateForRegister(
+      registerUserData.userDateOfBirth,
+    );
+
     await this.userFirstNameInput.fill(registerUserData.userFirstName);
     await this.userLastNameInput.fill(registerUserData.userLastName);
-    // await this.userDateOfBirthInput.fill(registerUserData.userDateOfBirth);
+    await this.userDateOfBirthInput.fill(userDateOfBirth);
     await this.userAddressInput.fill(registerUserData.userAddress);
     await this.userPostcodeInput.fill(registerUserData.userPostcode);
     await this.userCityInput.fill(registerUserData.userCity);

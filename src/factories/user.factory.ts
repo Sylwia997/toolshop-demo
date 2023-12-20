@@ -7,7 +7,7 @@ export function randomUserData(): RegisterUserModel {
     userLastName: faker.person.lastName().replace(/[^A-Za-z]/g, ''),
     userEmail: '',
     userPassword: faker.internet.password(),
-    userDateOfBirth: faker.date.birthdate({ min: 18, max: 65 }),
+    userDateOfBirth: faker.date.birthdate({ min: 18, max: 65, mode: 'age' }),
     userAddress: faker.location.streetAddress(),
     userPostcode: faker.location.zipCode(),
     userCity: faker.location.city(),
