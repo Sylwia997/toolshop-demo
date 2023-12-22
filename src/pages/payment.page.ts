@@ -59,4 +59,10 @@ export class PaymentPage extends BasePage {
     await this.giftCardNumberInput.fill(giftCardPaymentData.giftCardNumber);
     await this.validationCodeInput.fill(giftCardPaymentData.validationCode);
   }
+  async selectCashOnDeliveryOption(): Promise<void> {
+    await this.paymentMethodList.selectOption('Cash on Delivery');
+  }
+  async selectBuyNowPayLaterOption(): Promise<void> {
+    await this.paymentMethodList.selectOption('Buy Now Pay Later');
+  }
 }

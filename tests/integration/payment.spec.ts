@@ -59,6 +59,14 @@ test.describe('Payment tests', () => {
     await paymentPage.confirmButton.click();
     await expect(paymentPage.successfulPaymentAlert).toBeVisible();
   });
+  test('user can make payment by cash on delivery', async () => {
+    //Arrange
+    //Act
+
+    await paymentPage.selectCashOnDeliveryOption();
+    await paymentPage.confirmButton.click();
+    await expect(paymentPage.successfulPaymentAlert).toBeVisible();
+  });
   test('user can make payment by credit card', async () => {
     //Arrange
 
@@ -66,6 +74,18 @@ test.describe('Payment tests', () => {
     //Act
 
     await paymentPage.setCreditCartPaymentData(creditCardPaymentData);
+    await paymentPage.confirmButton.click();
+    await expect(paymentPage.successfulPaymentAlert).toBeVisible();
+  });
+  test('user can make payment by buy now pay later', async () => {
+    //Arrange
+    const months = ['3', '6', '9', '12'];
+    //Act
+
+    await paymentPage.selectBuyNowPayLaterOption();
+    await paymentPage.monthlyInstallmentsList.selectOption(
+      `${months[0]} monthly installments`,
+    );
     await paymentPage.confirmButton.click();
     await expect(paymentPage.successfulPaymentAlert).toBeVisible();
   });
