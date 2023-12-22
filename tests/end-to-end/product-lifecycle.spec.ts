@@ -4,6 +4,7 @@ import { AccountPage } from '@_src/pages/account.page';
 import { CheckoutPage } from '@_src/pages/checkout.page';
 import { HomePage } from '@_src/pages/home.page';
 import { LoginPage } from '@_src/pages/login.page';
+import { PaymentPage } from '@_src/pages/payment.page';
 import { ProductPage } from '@_src/pages/product.page';
 import { product1 } from '@_src/test-data/product.data';
 import { customerUser1 } from '@_src/test-data/user.data';
@@ -15,6 +16,7 @@ test.describe('Select, add to cart and buy product', () => {
   let checkoutPage: CheckoutPage;
   let loginPage: LoginPage;
   let accountPage: AccountPage;
+  let paymentPage: PaymentPage;
 
   test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
@@ -22,6 +24,7 @@ test.describe('Select, add to cart and buy product', () => {
     checkoutPage = new CheckoutPage(page);
     loginPage = new LoginPage(page);
     accountPage = new AccountPage(page);
+    paymentPage = new PaymentPage(page);
 
     await loginPage.goto();
     await loginPage.login(customerUser1);
@@ -29,16 +32,18 @@ test.describe('Select, add to cart and buy product', () => {
     await homePage.goto();
     await homePage.goToProduct(product1.productName);
   });
-  test('user can access single product @logged', async () => {
+  test('user can access single product', async () => {
     // Assert
-
     await expect(productPage.productName).toHaveText(product1.productName);
   });
-  test('user can add product to cart @logged', async () => {
+  test('user can add product to cart', async () => {
+    //Act
     await productPage.addToCartButton.click();
+
+    //Assert
     await expect(productPage.addProductToCartPopUp).toBeVisible();
   });
-  test('verify product quantity in card @logged', async () => {
+  test('verify product quantity in card', async () => {
     // Arrange
     const productQuantity = '7';
 
@@ -50,7 +55,7 @@ test.describe('Select, add to cart and buy product', () => {
     await expect(productPage.cartQuantity).toHaveText(productQuantity);
   });
 
-  test('verify product price in card @logged', async () => {
+  test('verify product price in card', async () => {
     // Arrange
     const productQuantity = 2;
 
@@ -77,9 +82,11 @@ test.describe('Select, add to cart and buy product', () => {
   //   await expect(checkoutPage.loggedInInformation).toHaveText(expectedText);
   // });
 
-  test('user completes missing data in checkout @logged', async () => {
+  test('user completes missing data in checkout', async () => {
+    //Arrange
     const registerUserData = randomUserData();
 
+    //Act
     await productPage.addToCartButton.click();
     await productPage.cartIcon.click();
 
@@ -88,14 +95,19 @@ test.describe('Select, add to cart and buy product', () => {
       .toHaveText(product1.productName);
     await checkoutPage.proceedToCheckoutButtonCart.click();
     await checkoutPage.proceedToCheckoutButtonSignIn.click();
-
     await checkoutPage.stateInput.fill(registerUserData.userState);
     await checkoutPage.postcodeInput.fill(registerUserData.userPostcode);
     await checkoutPage.proceedToCheckoutButtonAddress.click();
+
+    //Assert
+    await expect(paymentPage.paymentMethodList).toBeVisible();
   });
+
   test('user add product to favorites', async () => {
     await productPage.addToFavoritesButton.click();
 
     await expect(productPage.addProductToFavoritesPopUp).toBeVisible();
+    await accountPage.goToUrl('favorites');
+    await accountPage.deleteIcon.click();
   });
 });
