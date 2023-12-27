@@ -1,24 +1,33 @@
 /* eslint-disable playwright/expect-expect */
-import { DashboardPage } from '@_src/pages/dashboard.page';
-import { LoginPage } from '@_src/pages/login.page';
+import { expect, test } from '@_src/fixtures/merge.fixture';
+import { LoginUserModel } from '@_src/models/user.model';
 import { customerUser1 } from '@_src/test-data/user.data';
-import test, { expect } from '@playwright/test';
 
 test.describe('Verify login', () => {
-  test('login with correct credentials', async ({ page }) => {
+  test('user login with correct credentials', async ({ loginPage }) => {
     // Arrange
-    const expectedDashboardTitle =
-      'Practice Software Testing - Toolshop - v5.0';
-    const dashboardPage = new DashboardPage(page);
-    const loginPage = new LoginPage(page);
+    const expectedAccountPageTitle = 'My account';
 
-    // Act
-    await loginPage.goto();
-    await loginPage.login(customerUser1);
-
-    const title = await dashboardPage.getTitle();
+    //Act
+    const accountPage = await loginPage.login(customerUser1);
+    const title = await accountPage.pageTitle.textContent();
 
     // Assert
-    expect(title).toContain(expectedDashboardTitle);
+    expect(title).toContain(expectedAccountPageTitle);
+  });
+  test('reject login with incorrect password @GAD_R02_01', async ({
+    loginPage,
+  }) => {
+    //Arrange
+    const expectedLoginErrorText = 'Invalid email or password';
+    const loginUserData: LoginUserModel = {
+      userEmail: customerUser1.userEmail,
+      userPassword: 'incorrectPassword',
+    };
+
+    await loginPage.login(loginUserData);
+
+    //Assert
+    await expect(loginPage.loginError).toHaveText(expectedLoginErrorText);
   });
 });
