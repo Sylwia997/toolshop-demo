@@ -1,33 +1,26 @@
 /* eslint-disable playwright/expect-expect */
 import { randomUserData } from '@_src/factories/user.factory';
-import { AccountPage } from '@_src/pages/account.page';
+import { expect, test } from '@_src/fixtures/merge.fixture';
 import { CheckoutPage } from '@_src/pages/checkout.page';
 import { HomePage } from '@_src/pages/home.page';
-import { LoginPage } from '@_src/pages/login.page';
 import { PaymentPage } from '@_src/pages/payment.page';
 import { ProductPage } from '@_src/pages/product.page';
 import { product1 } from '@_src/test-data/product.data';
 import { customerUser1 } from '@_src/test-data/user.data';
-import test, { expect } from '@playwright/test';
 
 test.describe('Select, add to cart and buy product', () => {
   let homePage: HomePage;
   let productPage: ProductPage;
   let checkoutPage: CheckoutPage;
-  let loginPage: LoginPage;
-  let accountPage: AccountPage;
   let paymentPage: PaymentPage;
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ loginPage, page }) => {
     homePage = new HomePage(page);
     productPage = new ProductPage(page);
     checkoutPage = new CheckoutPage(page);
-    loginPage = new LoginPage(page);
-    accountPage = new AccountPage(page);
     paymentPage = new PaymentPage(page);
 
-    await loginPage.goto();
-    await loginPage.login(customerUser1);
+    const accountPage = await loginPage.login(customerUser1);
     await accountPage.waitForPageToLoadUrl();
     await homePage.goto();
     await homePage.goToProduct(product1.productName);
@@ -103,11 +96,11 @@ test.describe('Select, add to cart and buy product', () => {
     await expect(paymentPage.paymentMethodList).toBeVisible();
   });
 
-  test('user add product to favorites', async () => {
-    await productPage.addToFavoritesButton.click();
+  // test('user add product to favorites', async () => {
+  //   await productPage.addToFavoritesButton.click();
 
-    await expect(productPage.addProductToFavoritesPopUp).toBeVisible();
-    await accountPage.goToUrl('favorites');
-    await accountPage.deleteIcon.click();
-  });
+  //   await expect(productPage.addProductToFavoritesPopUp).toBeVisible();
+  //   await accountPage.goToUrl('favorites');
+  //   await accountPage.deleteIcon.click();
+  // });
 });

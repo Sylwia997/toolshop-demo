@@ -1,24 +1,20 @@
+import { expect, test } from '@_src/fixtures/merge.fixture';
 import { AccountPage } from '@_src/pages/account.page';
 import { HomePage } from '@_src/pages/home.page';
-import { LoginPage } from '@_src/pages/login.page';
 import { ProductPage } from '@_src/pages/product.page';
 import { product1 } from '@_src/test-data/product.data';
 import { customerUser1 } from '@_src/test-data/user.data';
-import test, { expect } from '@playwright/test';
 
 test.describe('Select, add to cart and buy product', () => {
   let homePage: HomePage;
   let productPage: ProductPage;
-  let loginPage: LoginPage;
   let accountPage: AccountPage;
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ loginPage, page }) => {
     homePage = new HomePage(page);
     productPage = new ProductPage(page);
-    loginPage = new LoginPage(page);
     accountPage = new AccountPage(page);
 
-    await loginPage.goto();
     await loginPage.login(customerUser1);
     await accountPage.waitForPageToLoadUrl();
     await homePage.goto();
