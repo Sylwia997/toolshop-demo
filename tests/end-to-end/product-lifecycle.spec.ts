@@ -66,14 +66,15 @@ test.describe('Select, add to cart and buy product', () => {
       totalCartPrice.toString(),
     );
   });
-  // test('user see information about logged in @logged', async () => {
-  //   await productPage.addToCartButton.click();
-  //   await productPage.cartIcon.click();
-  //   await checkoutPage.proceedToCheckoutButton.click();
-  //   const expectedText = `Hello ${await checkoutPage.userNameMenu.textContent()}, you are already logged in. You can proceed to checkout.`;
+  test('user see information about logged in', async () => {
+    await productPage.addToCartButton.click();
+    await productPage.cartIcon.click();
+    await checkoutPage.proceedToCheckoutButtonCart.click();
+    const userName = await checkoutPage.mainMenu.userName.textContent();
+    const expectedText = `Hello ${userName.trim()}, you are already logged in. You can proceed to checkout. Proceed to checkout `;
 
-  //   await expect(checkoutPage.loggedInInformation).toHaveText(expectedText);
-  // });
+    await expect(checkoutPage.loggedInInformationText).toHaveText(expectedText);
+  });
 
   test('user completes missing data in checkout', async () => {
     //Arrange
