@@ -5,6 +5,7 @@ import { Page } from '@playwright/test';
 export class AccountPage extends BasePage {
   url = '#/account';
   deleteIcon = this.page.locator('[data-test="delete"]').first();
+  pageTitle = this.page.locator('[data-test="page-title"]');
   mainMenu = new MainMenuComponent(this.page);
 
   constructor(page: Page) {

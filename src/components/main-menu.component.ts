@@ -6,6 +6,7 @@ export class MainMenuComponent {
   categoriesDropdownList = this.page.locator('[data-test="nav-categories"]');
   contactButton = this.page.locator('[data-test="nav-contact"]');
   signInButton = this.page.locator('[data-test="nav-sign-in"]');
+  userName = this.page.locator('[data-test="nav-user-menu"]');
 
   constructor(private page: Page) {}
 

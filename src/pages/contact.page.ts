@@ -1,12 +1,12 @@
 import { BasePage } from './base.page';
+import { MainMenuComponent } from '@_src/components/main-menu.component';
 import { ContactFormModel } from '@_src/models/user.model';
 import { Page } from '@playwright/test';
-
-import path = require('path');
 
 export class ContactPage extends BasePage {
   url = '#/contact';
 
+  mainMenu = new MainMenuComponent(this.page);
   firstNameInput = this.page.locator('[data-test="first-name"]');
   lastNameInput = this.page.locator('[data-test="last-name"]');
   emailInput = this.page.locator('[data-test="email"]');
@@ -14,6 +14,8 @@ export class ContactPage extends BasePage {
   messageInput = this.page.locator('[data-test="message"]');
   attachmentInput = this.page.locator('[data-test="attachment"]');
   sendButton = this.page.locator('[data-test="contact-submit"]');
+  alertMessage = this.page.locator('[class="alert alert-success mt-3"]');
+  textInform = this.page.locator('[class="row mb-3"]');
 
   constructor(page: Page) {
     super(page);
@@ -25,8 +27,8 @@ export class ContactPage extends BasePage {
     await this.subjectDropdownList.selectOption(contactFormData.subject);
     await this.messageInput.fill(contactFormData.message);
     await this.attachmentInput.setInputFiles(
-      path.join(__dirname, 'test_file.txt'),
-    );
-    await this.sendButton.click();
+      '/Users/sylwia/Desktop/test_file.txt',
+    ),
+      await this.sendButton.click();
   }
 }

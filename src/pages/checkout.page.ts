@@ -1,8 +1,10 @@
 import { BasePage } from './base.page';
+import { MainMenuComponent } from '@_src/components/main-menu.component';
 import { Page } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
   url = '#/checkout';
+  mainMenu = new MainMenuComponent(this.page);
   proceedToCheckoutButtonCart = this.page.locator('[data-test="proceed-1"]');
   proceedToCheckoutButtonSignIn = this.page.locator('[data-test="proceed-2"]');
   proceedToCheckoutButtonAddress = this.page.locator('[data-test="proceed-3"]');
@@ -13,9 +15,9 @@ export class CheckoutPage extends BasePage {
   userNameMenu = this.page.locator('#user-menu');
   stateInput = this.page.locator('#state');
   postcodeInput = this.page.locator('#postcode');
-  loggedInInformationText = this.page.locator(
-    '.col-md-6 offset-md-3 login-form-1',
-  );
+  loggedInInformationText = this.page
+    .locator('[class="col-md-6 offset-md-3 login-form-1"]')
+    .first();
 
   constructor(page: Page) {
     super(page);
