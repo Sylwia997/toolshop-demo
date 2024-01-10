@@ -15,9 +15,7 @@ test.describe('Verify login', () => {
     // Assert
     expect(title).toContain(expectedAccountPageTitle);
   });
-  test('reject login with incorrect password @GAD_R02_01', async ({
-    loginPage,
-  }) => {
+  test('reject login with incorrect password', async ({ loginPage }) => {
     //Arrange
     const expectedLoginErrorText = 'Invalid email or password';
     const loginUserData: LoginUserModel = {
