@@ -14,3 +14,5 @@ export const customerUser2: LoginUserModel = {
   userEmail: 'customer2@practicesoftwaretesting.com',
   userPassword: process.env.USER_PASSWORD ?? '[NOT SET]',
 };
+
+export const customerUser1FullName = 'Jane Doe';
