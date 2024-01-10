@@ -10,6 +10,7 @@ export class LoginPage extends BasePage {
   loginButton = this.page.locator('[data-test="login-submit"]');
   headingTitle = this.page.getByRole('heading', { name: 'Login' });
   loginError = this.page.locator('[data-test="login-error"]');
+
   constructor(page: Page) {
     super(page);
   }
@@ -18,6 +19,8 @@ export class LoginPage extends BasePage {
     await this.userEmailInput.fill(loginUserData.userEmail);
     await this.userPasswordInput.fill(loginUserData.userPassword);
     await this.loginButton.click();
-    return new AccountPage(this.page);
+    const accountPage = new AccountPage(this.page);
+    await accountPage.waitForPageToLoadUrl();
+    return accountPage;
   }
 }
