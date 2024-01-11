@@ -7,7 +7,7 @@ export function randomContactFormData(): ContactFormModel {
     lastName: faker.person.lastName().replace(/[^A-Za-z]/g, ''),
     userEmail: '',
     subject: 'Customer service',
-    message: faker.lorem.sentences(),
+    message: faker.lorem.sentence(20),
     attachment: 'testowa grafika biura.png',
   };
 

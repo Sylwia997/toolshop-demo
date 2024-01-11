@@ -20,10 +20,22 @@ export class ContactPage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
-  async fillContactForm(contactFormData: ContactFormModel): Promise<void> {
+  async fillContactFormByUnloggedUser(
+    contactFormData: ContactFormModel,
+  ): Promise<void> {
     await this.firstNameInput.fill(contactFormData.firstName);
     await this.lastNameInput.fill(contactFormData.lastName);
     await this.emailInput.fill(contactFormData.userEmail);
+    await this.subjectDropdownList.selectOption(contactFormData.subject);
+    await this.messageInput.fill(contactFormData.message);
+    await this.attachmentInput.setInputFiles(
+      '/Users/sylwia/Desktop/test_file.txt',
+    ),
+      await this.sendButton.click();
+  }
+  async fillContactFormByLoggedInUser(
+    contactFormData: ContactFormModel,
+  ): Promise<void> {
     await this.subjectDropdownList.selectOption(contactFormData.subject);
     await this.messageInput.fill(contactFormData.message);
     await this.attachmentInput.setInputFiles(

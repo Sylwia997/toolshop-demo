@@ -24,7 +24,7 @@ test.describe('Sending a contact form by logged in and not logged in user', () =
     await expect
       .soft(contactPage.textInform)
       .toHaveText(expectedWelcomeMessage);
-    await contactPage.fillContactForm(randomContactFormData());
+    await contactPage.fillContactFormByLoggedInUser(randomContactFormData());
 
     //Assert
     await expect(contactPage.alertMessage).toHaveText(expectedSuccessMessage);
@@ -36,7 +36,7 @@ test.describe('Sending a contact form by logged in and not logged in user', () =
 
     //Act
     await contactPage.goto();
-    await contactPage.fillContactForm(randomContactFormData());
+    await contactPage.fillContactFormByUnloggedUser(randomContactFormData());
 
     //Assert
     await expect(contactPage.alertMessage).toHaveText(expectedSuccessMessage);
