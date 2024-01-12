@@ -4,25 +4,33 @@
 name: Tool shop demo tests
 
 on:
- push:
-   branches: [main, master]
- pull_request:
-   branches: [main, master]
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
 jobs:
- run-tests:
-   timeout-minutes: 5
-   runs-on: ubuntu-latest
-   steps:
-     - uses: actions/checkout@v3
-     - uses: actions/setup-node@v3
-       with:
-         node-version: 18
-     - name: Install dependencies
-       run: npm ci
-     - name: Install Playwright Browsers
-       run: npx playwright install --with-deps
-     - name: Run Playwright tests
-       env: 
-        BASE_URL: ${{ vars.BASE_URL }} 
-       run: npm run test
+  run-tests:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+        run: npm run test
+      - name: Archive tests results
+        if: success() || failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: |
+            ./playwright-report/**/*.*
+            ./test-results/**/*.*
