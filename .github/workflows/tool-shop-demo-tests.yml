@@ -23,4 +23,6 @@ jobs:
      - name: Install Playwright Browsers
        run: npx playwright install --with-deps
      - name: Run Playwright tests
+       env: 
+        BASE_URL: ${{ vars.BASE_URL }} 
        run: npm run test
