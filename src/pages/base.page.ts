@@ -5,6 +5,8 @@ export class BasePage {
   constructor(protected page: Page) {}
 
   async goto(): Promise<void> {
+    // eslint-disable-next-line no-console
+    console.log(this.url);
     await this.page.goto(this.url);
   }
 
