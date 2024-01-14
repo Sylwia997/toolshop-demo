@@ -96,12 +96,4 @@ test.describe('Select, add to cart and buy product', () => {
     //Assert
     await expect(paymentPage.paymentMethodList).toBeVisible();
   });
-
-  // test('user add product to favorites', async () => {
-  //   await productPage.addToFavoritesButton.click();
-
-  //   await expect(productPage.addProductToFavoritesPopUp).toBeVisible();
-  //   await accountPage.goToUrl('favorites');
-  //   await accountPage.deleteIcon.click();
-  // });
 });
