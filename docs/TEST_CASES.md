@@ -163,3 +163,121 @@ User is logged in and has access to the product page: https://practicesoftwarete
 ### EXPECTED RESULT:
 
 User see information that he is logged in: `Hello ${user Name}, you are already logged in. You can proceed to checkout'
+
+### EXPECTED RESULT:
+
+User see information that he is logged in: `Hello ${user Name}, you are already logged in. You can proceed to checkout'
+
+## TITLE: User can make payment by bank transfer method
+
+### ID: #9
+
+### PRIORITY: 1
+
+### PRE CONDITIONS:
+
+- User is logged in
+- User has completed the address data
+- User has added product do cart
+- User is on the payment page
+
+### STEPS:
+
+1. User choose payment method - by bank transfer - from dropdown list
+2. User fills in required fields
+3. User enter 'confirm' button
+
+### EXPECTED RESULT:
+
+Payment has been made and user see information: `Payment was successful'
+
+## TITLE: User can make payment by cash on delivery method
+
+### ID: #10
+
+### PRIORITY: 1
+
+### PRE CONDITIONS:
+
+- User is logged in
+- User has completed the address data
+- User has added product do cart
+- User is on the payment page
+
+### STEPS:
+
+1. User choose payment method - cash on delivery - from dropdown list
+2. User enter 'confirm' button
+
+### EXPECTED RESULT:
+
+Payment has been made and user see information: `Payment was successful'
+
+## TITLE: User can make payment by credit card method
+
+### ID: #11
+
+### PRIORITY: 1
+
+### PRE CONDITIONS:
+
+- User is logged in
+- User has completed the address data
+- User has added product do cart
+- User is on the payment page
+
+### STEPS:
+
+1. User choose payment method - credit card - from dropdown list
+2. User fills in required fields
+3. User enter 'confirm' button
+
+### EXPECTED RESULT:
+
+Payment has been made and user see information: `Payment was successful'
+
+## TITLE: User can make payment by 'buy now pay later' method
+
+### ID: #12
+
+### PRIORITY: 1
+
+### PRE CONDITIONS:
+
+- User is logged in
+- User has completed the address data
+- User has added product do cart
+- User is on the payment page
+
+### STEPS:
+
+1. User choose payment method - buy now pay later - from dropdown list
+2. User choose monthly installments
+3. User enter 'confirm' button
+
+### EXPECTED RESULT:
+
+Payment has been made and user see information: `Payment was successful'
+
+## TITLE: User can make payment by 'gift card' method
+
+### ID: #13
+
+### PRIORITY: 1
+
+### PRE CONDITIONS:
+
+- User is logged in
+- User has completed the address data
+- User has added product do cart
+- User is on the payment page
+
+### STEPS:
+
+1. User choose payment method - gift card - from dropdown list
+2. User fills in required fields
+3. User enter 'confirm' button
+
+### EXPECTED RESULT:
+
+Payment has been made and user see information: `Payment was successful'
