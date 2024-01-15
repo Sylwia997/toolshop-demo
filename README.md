@@ -34,3 +34,7 @@ npx playwright test
 ```
 
 For more usage cases look in `package.json` scripts section.
+
+## Test Cases
+
+All test cases that have been automated are described in the docs/TEST_CASES.md
