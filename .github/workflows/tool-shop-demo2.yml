@@ -26,6 +26,10 @@ jobs:
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ vars.BASE_URL }}
+          ADMIN_URL: ${{ vars.ADMIN_URL }}
+          CUSTOMER_1_EMAIL: ${{ vars.CUSTOMER_1_EMAIL }}
+          CUSTOMER_2_EMAIL: ${{ vars.CUSTOMER_2_EMAIL }}
+          USER_PASSWORD: ${{ vars.USER_PASSWORD }}
         run: npm run test
       - name: Archive tests results
         if: success() || failure()
