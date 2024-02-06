@@ -1,3 +1,4 @@
+import { BASE_URL } from '@_config/env.config';
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -6,14 +7,14 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   globalSetup: 'src/global-setup.ts',
-  timeout: 70_000,
+  timeout: 20_000,
   expect: { timeout: 5_000 },
   fullyParallel: true,
   retries: 0,
   workers: undefined,
   reporter: 'html',
   use: {
-    baseURL: 'https://practicesoftwaretesting.com/',
+    baseURL: BASE_URL,
     actionTimeout: 0,
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
