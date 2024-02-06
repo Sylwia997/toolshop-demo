@@ -26,7 +26,7 @@ jobs:
       - name: Run Playwright tests
         env:
           BASE_URL: ${{ vars.BASE_URL }}
-          ADMIN_URL: ${{ vars.ADMIN_EMAIL }}
+          ADMIN_EMAIL: ${{ vars.ADMIN_EMAIL }}
           CUSTOMER_1_EMAIL: ${{ vars.CUSTOMER_1_EMAIL }}
           CUSTOMER_2_EMAIL: ${{ vars.CUSTOMER_2_EMAIL }}
           USER_PASSWORD: ${{ vars.USER_PASSWORD }}
