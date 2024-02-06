@@ -25,11 +25,11 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         env:
-          BASE_URL: ${{ vars.BASE_URL }}
-          ADMIN_EMAIL: ${{ vars.ADMIN_EMAIL }}
-          CUSTOMER_1_EMAIL: ${{ vars.CUSTOMER_1_EMAIL }}
-          CUSTOMER_2_EMAIL: ${{ vars.CUSTOMER_2_EMAIL }}
-          USER_PASSWORD: ${{ vars.USER_PASSWORD }}
+          BASE_URL: ${{ env.BASE_URL }}
+          ADMIN_EMAIL: ${{ env.ADMIN_EMAIL }}
+          CUSTOMER_1_EMAIL: ${{ env.CUSTOMER_1_EMAIL }}
+          CUSTOMER_2_EMAIL: ${{ env.CUSTOMER_2_EMAIL }}
+          USER_PASSWORD: ${{ env.USER_PASSWORD }}
         run: npm run test
       - name: Archive tests results
         if: success() || failure()
