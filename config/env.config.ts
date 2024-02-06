@@ -7,6 +7,7 @@ function requireEnvVariable(envVariableName: string): string {
   if (envVariableValue === undefined) {
     throw new Error(`Environment variable ${envVariableName} is not set.`);
   }
+  console.log(envVariableName, envVariableValue);
   return envVariableValue;
 }
 
